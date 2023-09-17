@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>No Access</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Press Start 2P", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: red;
+
+    }
+
+    .utility-page-wrap {
+      max-width: 400px;
+      padding: 20px;
+      margin: 0 10px; /* Added margin on the left and right sides */
+      text-align: center;
+      background-color: #f8f8f8; /* New background color */
+    }
+
+    .text-field {
+      font-size: 15px;
+    }
+
+    .error-message {
+      font-size: 10px;
+      padding: 10px;
+    }
+
+    .submit-button {
+      margin-top: 10px;
+      padding: 10px 10px; /* Added padding around the button */
+    }
+  </style>
+  <script>
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      var passwordInput = document.getElementById("pass");
+      var errorMessage = document.querySelector(".error-message");
+
+      if (passwordInput.value === "iluvyou") {
+        // Redirect to the next page (replace "index.html" with the desired page URL)
+        window.location.href = "home.html";
+      } else {
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="utility-page-wrap nes-container is-rounded">
+    <div class="utility-page-content w-password-page w-form">
+      <form onsubmit="handleFormSubmit(event)" id="email-form" name="email-form" data-name="Email Form" class="utility-page-form w-password-page">
+        <label for="pass" class="field-label w-password-page">Password</label>
+        <input type="password" class="text-field w-password-page w-input nes-input" autofocus="true" maxlength="256" name="pass" data-name="field" placeholder="Enter the password" id="pass">
+        <br>
+        <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button w-password-page w-button nes-btn is-primary"> <!-- Added 'is-primary' class for new background color -->
+        <div class="w-password-page w-form-fail error-message" style="display: none;">
+          <div>Incorrect password. Please try again.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
