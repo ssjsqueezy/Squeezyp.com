@@ -1,3 +1,6 @@
+Certainly! To make the Matrix rain effect closer to that of the movie, we can make the characters fall at varying speeds and add a bit of randomness to their positions. Additionally, we can adjust the font size and color to resemble the classic green characters from the Matrix. Here's an updated version of the code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +16,18 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: blue;
+            background-color: black;
+            position: relative;
         }
 
         video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
+            z-index: 0;
         }
 
         .soundcloud-container {
@@ -55,23 +62,89 @@
             color: #cccccc;
             text-decoration: none;
         }
+
+        /* Matrix-like rain effect */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .matrix-character {
+            color: #00FF00;
+            font-size: 16px; /* Adjust the font size */
+            position: absolute;
+            animation: fall linear infinite;
+            transform-origin: bottom;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh); /* Adjust the translateY value */
+            }
+        }
     </style>
-    <title>goku</title>
+    <title>mr.neo</title>
 </head>
 
 <body>
     <video autoplay loop muted playsinline>
-        <source src="gokushort.mp4" type="video/mp4">
+        <source src="mrneovideo.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <div class="soundcloud-container">
-        <iframe class="soundcloud-embed" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1722383082&color=%23000000&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        <iframe class="soundcloud-embed" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1734260385&color=%23000000&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
         <div class="soundcloud-info">
             <a href="https://soundcloud.com/squeeezyp" title="$queezy P" target="_blank">$queezy P</a> ·
-            <a href="https://soundcloud.com/squeeezyp/goku" title="goku" target="_blank" style="color: #cccccc; text-decoration: none;">goku</a>
+            <a href="https://soundcloud.com/squeeezyp/mrneo" title="mr.neo" target="_blank" style="color: #cccccc; text-decoration: none;">mr.neo</a>
         </div>
     </div>
+
+    <!-- Matrix rain effect -->
+    <div class="matrix-rain"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const matrixRain = document.querySelector(".matrix-rain");
+
+            function createMatrixCharacter() {
+                const character = document.createElement("div");
+                character.className = "matrix-character";
+                character.textContent = Math.random() < 0.5 ? "1" : "0";
+
+                const position = Math.random() * 100;
+                const animationDuration = Math.random() * 2 + 1; // Adjust the duration as needed
+
+                character.style.left = `${position}vw`;
+                character.style.animationDuration = `${animationDuration}s`;
+
+                return character;
+            }
+
+            function startMatrixRain() {
+                setInterval(function () {
+                    const character = createMatrixCharacter();
+                    matrixRain.appendChild(character);
+
+                    setTimeout(function () {
+                        matrixRain.removeChild(character);
+                    }, character.style.animationDuration.replace("s", "") * 1000);
+                }, 50); // Adjust the interval for density
+            }
+
+            startMatrixRain();
+        });
+    </script>
+
 </body>
 
 </html>
+```
+
+Feel free to adjust the font size, translateY value, and animation duration to achieve the desired Matrix rain effect.
