@@ -1,150 +1,39 @@
-Certainly! To make the Matrix rain effect closer to that of the movie, we can make the characters fall at varying speeds and add a bit of randomness to their positions. Additionally, we can adjust the font size and color to resemble the classic green characters from the Matrix. Here's an updated version of the code:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://nostalgic-css.github.io/NES.css/css/nes.min.css">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: black;
-            position: relative;
-        }
-
-        video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .soundcloud-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 250px;
-            width: 100%;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .soundcloud-embed {
-            width: 100%;
-            height: 300px;
-        }
-
-        .soundcloud-info {
-            font-size: 10px;
-            color: #cccccc;
-            font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
-            font-weight: 100;
-            line-break: anywhere;
-            word-break: normal;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
-        .soundcloud-info a {
-            color: #cccccc;
-            text-decoration: none;
-        }
-
-        /* Matrix-like rain effect */
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .matrix-character {
-            color: #00FF00;
-            font-size: 16px; /* Adjust the font size */
-            position: absolute;
-            animation: fall linear infinite;
-            transform-origin: bottom;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(110vh); /* Adjust the translateY value */
-            }
-        }
-    </style>
-    <title>mr.neo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded Music Player</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* White background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the body take up the full viewport height */
+  }
+  .container {
+    width: 100%;
+    max-width: 660px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+</style>
 </head>
-
 <body>
-    <video autoplay loop muted playsinline>
-        <source src="mrneovideo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
 
-    <div class="soundcloud-container">
-        <iframe class="soundcloud-embed" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1734260385&color=%23000000&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <div class="soundcloud-info">
-            <a href="https://soundcloud.com/squeeezyp" title="$queezy P" target="_blank">$queezy P</a> ·
-            <a href="https://soundcloud.com/squeeezyp/mrneo" title="mr.neo" target="_blank" style="color: #cccccc; text-decoration: none;">mr.neo</a>
-        </div>
-    </div>
-
-    <!-- Matrix rain effect -->
-    <div class="matrix-rain"></div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const matrixRain = document.querySelector(".matrix-rain");
-
-            function createMatrixCharacter() {
-                const character = document.createElement("div");
-                character.className = "matrix-character";
-                character.textContent = Math.random() < 0.5 ? "1" : "0";
-
-                const position = Math.random() * 100;
-                const animationDuration = Math.random() * 2 + 1; // Adjust the duration as needed
-
-                character.style.left = `${position}vw`;
-                character.style.animationDuration = `${animationDuration}s`;
-
-                return character;
-            }
-
-            function startMatrixRain() {
-                setInterval(function () {
-                    const character = createMatrixCharacter();
-                    matrixRain.appendChild(character);
-
-                    setTimeout(function () {
-                        matrixRain.removeChild(character);
-                    }, character.style.animationDuration.replace("s", "") * 1000);
-                }, 50); // Adjust the interval for density
-            }
-
-            startMatrixRain();
-        });
-    </script>
+<div class="container">
+  <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/son/1729414165"></iframe>
+</div>
 
 </body>
-
 </html>
-```
-
-Feel free to adjust the font size, translateY value, and animation duration to achieve the desired Matrix rain effect.
