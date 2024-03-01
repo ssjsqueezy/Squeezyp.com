@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Son</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #fff; /* White background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Make the body take up the full viewport height */
-  }
-  .container {
-    width: 100%;
-    max-width: 660px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  iframe {
-    width: 100%;
-    height: 450px;
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Me</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* white background */
+        }
+
+        .video-container {
+            position: relative;
+            width: 80%; /* Adjust as needed */
+            max-width: 800px; /* Set max width for larger screens */
+        }
+
+        .video-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media screen and (min-width: 768px) {
+            .video-container iframe {
+                height: 500px; /* Adjust height for desktop view */
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/son/1729414165"></iframe>
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/t4eeeUOirrk?si=Qpi_xfQ3NlOjA7m7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 </body>
